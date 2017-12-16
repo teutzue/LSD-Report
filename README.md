@@ -30,84 +30,84 @@ In the website users should be able to view stories and interact with stories by
 
 **Functional Requirements**
 
-- --Display a set of stories and comments on the front page
-- --Stories and comments are posted by users, which have to be registered to and logged into the system to be able to post
-- --Users login to the system via a separate page
-- --Users are identified by a user name and a password
-- --New users can register to the system, via a separate page.
-- --Users can upvote stories and/or comments
-- --Design and functionality should mimic the original Hacker News
-- --The system should have a Karma point system
-- --Only registered users can upvote or downvote posts
-- --Only users with 500 Karma points or more can downvote posts
+- Display a set of stories and comments on the front page
+- Stories and comments are posted by users, which have to be registered to and logged into the system to be able to post
+- Users login to the system via a separate page
+- Users are identified by a user name and a password
+- New users can register to the system, via a separate page.
+- Users can upvote stories and/or comments
+- Design and functionality should mimic the original Hacker News
+- The system should have a Karma point system
+- Only registered users can upvote or downvote posts
+- Only users with 500 Karma points or more can downvote posts
 
 **Non Functional requirements** :
 
 Legal
 
-- --Webapp has to mention the original Hackernews
-- --Webapp has to mention that this is a school project and it&#39;s not meant to be some kind of competition for Hackernews
+- Webapp has to mention the original Hackernews
+- Webapp has to mention that this is a school project and it&#39;s not meant to be some kind of competition for Hackernews
 
 Usability
 
-- --The website has to work smoothly, without any uncaught or critical errors.
-- --The website wait times should be short
-- --Error messages should help a user recover from an error
-- --Actions that can&#39;t be undone need to have user confirmation
+- The website has to work smoothly, without any uncaught or critical errors.
+- The website wait times should be short
+- Error messages should help a user recover from an error
+- Actions that can&#39;t be undone need to have user confirmation
 
 Implementation
 
-- --Registered users should not be able to access some other users account and post under their name
+- Registered users should not be able to access some other users account and post under their name
 
 **System**
 
 **Functional requirements** :
 
-- --Be able to fetch the most recent stories that have been persisted in the database
-- --Store user data (password, username)
-- --Store stories and comments and be able to relate them to who created them
-- --Authenticate users by verifying matching credentials
-- --Be able to modify the data of an already created user
-- --Have a Karma scale per story and comment
+- Be able to fetch the most recent stories that have been persisted in the database
+- Store user data (password, username)
+- Store stories and comments and be able to relate them to who created them
+- Authenticate users by verifying matching credentials
+- Be able to modify the data of an already created user
+- Have a Karma scale per story and comment
 
 **Non Functional requirements** :
 
 Usability
 
-- --There should be available and complete user documentation
+- There should be available and complete user documentation
 
 Reliability
 
-- --The system has to have an uptime of 95% or more.
-- --The system should always be able to process data
+- The system has to have an uptime of 95% or more.
+- The system should always be able to process data
 
 Performance
 
-- --The system has to be robust and fast
-- --The website should be dynamic
-- --Must be able to scale
-- --Timely delivery of processed data
+- The system has to be robust and fast
+- The website should be dynamic
+- Must be able to scale
+- Timely delivery of processed data
 
 Supportability
 
-- --The system's basic functionalities should be tested
-- --The backend and frontend should not be heavily coupled
+- The system's basic functionalities should be tested
+- The backend and frontend should not be heavily coupled
 
 Implementation
 
-- --The system must utilize a VCS system
-- --Each component of the system can be upgraded separately
-- --The two major components of our System (frontend and backend) need to have continuous integration.
+- The system must utilize a VCS system
+- Each component of the system can be upgraded separately
+- The two major components of our System (frontend and backend) need to have continuous integration.
 
 Interface
 
-- --System requires a REST API
-- --The REST API has to allow external program to query its state
+- System requires a REST API
+- The REST API has to allow external program to query its state
 
 Packaging
 
-- --Project has to be shipped with whole data that is necessary (database scripts etc.)
-- --Project has to utilize virtualization in order to be software independent (docker)
+- Project has to be shipped with whole data that is necessary (database scripts etc.)
+- Project has to utilize virtualization in order to be software independent (docker)
 
 **1.2. Development process**
 
@@ -129,13 +129,13 @@ Decision theory
 
 While building the LSD Hacker News project, we were required to make various decisions regarding to all development phases. Throughout that process, we went through all 3 decision making models:
 
-- --Economic man (known problem, known solution): the knowledge for building a server, with an associated front end component was there so we knew what to do and how to do it from the beginning
-- --Administrative man (known problem, unknown solution): experience with the Neo4j database was present and we were able to make qualified decisions when unexpected problems arised
-- --Muddling through (unknown problem, unknown solution) : we had little knowledge about logging and monitoring but we had the capabilities to evaluate the right decisions to configure and use them.
+- Economic man (known problem, known solution): the knowledge for building a server, with an associated front end component was there so we knew what to do and how to do it from the beginning
+- Administrative man (known problem, unknown solution): experience with the Neo4j database was present and we were able to make qualified decisions when unexpected problems arised
+- Muddling through (unknown problem, unknown solution) : we had little knowledge about logging and monitoring but we had the capabilities to evaluate the right decisions to configure and use them.
 
-- --Concepts meaning methodology, scrum, how we worked
-- --Branching strategy, pair programming
-- --Basically read a bit about methodologies and pick what aspects from them we used (willing or unwillingly)
+- Concepts meaning methodology, scrum, how we worked
+- Branching strategy, pair programming
+- Basically read a bit about methodologies and pick what aspects from them we used (willing or unwillingly)
 
 **1.3. Software architecture**
 
@@ -164,7 +164,7 @@ Basically, Jenkins pulls the code from Github, fetches all dependencies from Mav
 
  ![](https://github.com/teutzue/LSD-Report/blob/master/Picture2.png) 
 
-* Diagram of how our back-end CI chain works, the base of the arrow shows which service initiates contact
+*Diagram of how our back-end CI chain works, the base of the arrow shows which service initiates contact
 
 The front end component of our web application uses a different Continuous Integration tool - Travis. It was simpler to setup in comparison to Jenkins since Travis is able to automatically pull npm dependencies. The flow starts on the local machine from which code is pushed to Github; Building and testing the code is done in Travis and after, the deployables are pushed to AWS (Amazon web services) into an S3 bucket.
 
@@ -186,12 +186,11 @@ As expected Neo4j was very problematic due to unexpected problems with queries o
 
 Most of functional requirements are reflected in system as cypher queries. For example:
 
-- --Authenticate users by verifying matching credentials
+- Authenticate users by verifying matching credentials
 
 ![](https://github.com/teutzue/LSD-Report/blob/master/Picture4.png) 
 
--
---Be able to fetch the most recent stories that have been persisted in the database 
+- Be able to fetch the most recent stories that have been persisted in the database 
 
 ![](https://github.com/teutzue/LSD-Report/blob/master/Picture5.png) 
 
