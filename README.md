@@ -26,7 +26,7 @@ The requirements of our project are split up into two parts, the website itself 
 
 **Website**
 
-In the website users should be able to view stories and interact with stories by creating them, commenting on them and modifying the &quot;point&quot; system by giving or reducing a &quot;point&quot;. The website is centered around stories posted by users. This system is a replica of &quot;Hacker News&quot; by Y Combinator. Users who are not registered are simply able to read stories and register themselves meanwhile registered users are able to upvote/downvote a story as well as create stories, view other user&#39;s past interactions on the website as well as see their own. A registered user is also able to comment on existing stories
+In the website users should be able to view stories and interact with stories by creating them, commenting on them and modifying the &quot;point&quot; system by giving or reducing a &quot;point&quot;. The website is centered around stories posted by users. This system is a replica of &quot;Hacker News&quot; by Y Combinator. Users who are not registered are simply able to read stories and register themselves meanwhile registered users are able to upvote/downvote a story as well as create stories, view other user's past interactions on the website as well as see their own. A registered user is also able to comment on existing stories
 
 **Functional Requirements**
 
@@ -46,14 +46,14 @@ In the website users should be able to view stories and interact with stories by
 Legal
 
 - Webapp has to mention the original Hackernews
-- Webapp has to mention that this is a school project and it&#39;s not meant to be some kind of competition for Hackernews
+- Webapp has to mention that this is a school project and it's not meant to be some kind of competition for Hackernews
 
 Usability
 
 - The website has to work smoothly, without any uncaught or critical errors.
 - The website wait times should be short
 - Error messages should help a user recover from an error
-- Actions that can&#39;t be undone need to have user confirmation
+- Actions that can't be undone need to have user confirmation
 
 Implementation
 
@@ -119,7 +119,7 @@ Cross functionality of roles appeared naturally in our team.
 
 Communication and work strategy
 
-The internet was the place where we&#39;d usually meet and discuss about the project. This enabled us to work independently from home at any given time without time or environment constraints. Sometimes we would also meet in person and have pair programming sessions.
+The internet was the place where we'd usually meet and discuss about the project. This enabled us to work independently from home at any given time without time or environment constraints. Sometimes we would also meet in person and have pair programming sessions.
 
 Branching strategy
 
@@ -172,7 +172,7 @@ The front end component of our web application uses a different Continuous Integ
 
 For this project we have chosen Neo4j graph database. This choice was made based on detailed analyze of Hackernews discussion sections. Hackernews allows to comment not only posts but also comments of other people. This results in a lot of related data that forms a directed acyclic graph. Neo4j seemed like an obvious choice since it has native support for all kinds of graph structures. Native support for graph structure means robustness and lightning fast performance compared to other databases that do not provide such support.
 
-Before we started the project we had a big concern that Neo4j can be sometimes problematic to work with since it&#39;s a relatively young product. With this issue in mind we have chosen JDBC implementation of Neo4j as a primary way of interaction with database. It is way more verbose and a little bit harder to work with than Object Graph Mapper (OGM). The rationale behind JDBC is that it certainly empowers the developer by providing him way more control over flow over program. This control is priceless when Neo4j is causing unexpected problems.
+Before we started the project we had a big concern that Neo4j can be sometimes problematic to work with since it's a relatively young product. With this issue in mind we have chosen JDBC implementation of Neo4j as a primary way of interaction with database. It is way more verbose and a little bit harder to work with than Object Graph Mapper (OGM). The rationale behind JDBC is that it certainly empowers the developer by providing him way more control over flow over program. This control is priceless when Neo4j is causing unexpected problems.
 
 For server we have chosen java and spring. Java was chosen because Neo4j is written in Java so it has native support for that language. Moreover some of us have already strong experience in this programming language. Java is also one of most used programming languages so there is almost unlimited amount of resources to work with. We had to implement REST API and we have chosen Spring for that matter. It is also one of most robust and popular frameworks for java. Beside that, Spring syntax is very terse so it eliminates a lot of boilerplate code and helps to combat verbosity of Java language without sacrifices in performance.
 
@@ -180,7 +180,7 @@ For the front-end we had planned on creating a React JS application due to React
 
 **1.5. Software implementation**
 
-Spring framework was indeed a good choice. It allowed us to quickly implement REST API operations and as a result allocate more man power on other tasks. Server structure can be decomposed into two parts - rest controller and database mapper. Communication between Rest controller and database mapper is based on contract defined by java interface. This approach reduces coupling and improves cohesion. As a result it allows to swap implementations of database mapper on demand. For example we could switch database to MySql or MongoDB with only one line of code.  Rest controller lists all possible API operations and it&#39;s handling the requests and responses. Database mapper is responsible for database calls and mapping between Neo4j nodes and Java Objects.
+Spring framework was indeed a good choice. It allowed us to quickly implement REST API operations and as a result allocate more man power on other tasks. Server structure can be decomposed into two parts - rest controller and database mapper. Communication between Rest controller and database mapper is based on contract defined by java interface. This approach reduces coupling and improves cohesion. As a result it allows to swap implementations of database mapper on demand. For example we could switch database to MySql or MongoDB with only one line of code.  Rest controller lists all possible API operations and it's handling the requests and responses. Database mapper is responsible for database calls and mapping between Neo4j nodes and Java Objects.
 
 As expected Neo4j was very problematic due to unexpected problems with queries on aggregated data. Fortunately due to the choice of JDBC as a primary way of interaction with database, we were able to do extensive optimization of queries which resulted in major performance improvements.
 
@@ -194,7 +194,7 @@ Most of functional requirements are reflected in system as cypher queries. For e
 
 ![](https://github.com/teutzue/LSD-Report/blob/master/Picture5.png) 
 
-Unfortunately we didn't meet the requirement that only people with 500 or more karma points can downvote. This was due to the fact that we didn't have time to implement this feature. We are aware that it could be solved through a query that checks how many karma points does user have and returning false when he/she doesn&#39;t have enough points. Unfortunately this would require few small changes in database design and we didn&#39;t have time for that.
+Unfortunately we didn't meet the requirement that only people with 500 or more karma points can downvote. This was due to the fact that we didn't have time to implement this feature. We are aware that it could be solved through a query that checks how many karma points does user have and returning false when he/she doesn't have enough points. Unfortunately this would require few small changes in database design and we didn't have time for that.
 
 When developing the front-end of the project everything went according to plan except we did not anticipate for the need of CloudFront. The reason for which we needed CloudFront was for when an end user would try to access an endpoint which was not registered in the API the user would be redirected to a 404 error landing page. This was something that we did not want users to encounter, especially as we were redirecting using the front-end rather than the server. This meant that when a user would refresh the page on any URL other than the base url the user would then be redirected to the 404 landing page as all routes were stored in the front-end rather than the server. All CloudFront does is redirect any 404 error to the base URL and then allows the front-end to take care of the rest of the routing.
 
@@ -220,7 +220,7 @@ In their service-level agreement Group H well and compactly stated the commitmen
 
 In the SLA Group H also stated that they were aiming for their server to be able to digest stories and comments from the simulator program without errors.
 
-SLA also included a brief description of three monitoring processes that the group has shown in their Grafana. First of them was a &quot;System Status&quot; which was a simple metric displaying system&#39;s current status, either it was down or up and running. Second metric, &quot;Uptime&quot; was very important due to its usefulness related to meeting the agreed uptime threshold. Metrics was basically meant to display an uptime of the application in two formats, percentage and hours since last restart of the system. Last metric &quot;process\_cpu\_seconds&quot; shown the total system cpu time used in seconds.
+SLA also included a brief description of three monitoring processes that the group has shown in their Grafana. First of them was a &quot;System Status&quot; which was a simple metric displaying system's current status, either it was down or up and running. Second metric, &quot;Uptime&quot; was very important due to its usefulness related to meeting the agreed uptime threshold. Metrics was basically meant to display an uptime of the application in two formats, percentage and hours since last restart of the system. Last metric &quot;process\_cpu\_seconds&quot; shown the total system cpu time used in seconds.
 
 **2.3. Maintenance and reliability**
 
@@ -263,7 +263,7 @@ To conclude this section we had a pretty hard time monitoring the others group s
 
 3.1. Technical discussion
 
-After some reflection we have concluded that our project was handled very well and that we have done a great job at taking responsibility for our parts of the system. What made us have such a smooth ride when maintaining and creating our system was the split of responsibilities we set before actually starting the project. We split ourselves up into two major groups frontend and backend, and within those groups we set who had more responsibility of which parts of the system. That worked very well for us as there were group members that felt responsible for making their part of the system work as they would let the rest of the team down if their part didn&#39;t work. Even though we were good at handling our parts of the system one thing that did lack was solid communication between each other. Overall we knew what we each had to do and how to do it but we did not communicate between each other about the status of our work or the problems we were facing. This could have helped us find some solutions faster as someone in the team would probably be able to help out. We were also not very good at discussing how exactly we would integrate our system, this was due to the lack of documentation, even the simplest form of it. This led to us having to look through source code in order to understand how to integrate. This was fine as we all knew the languages and technologies we were working with but if one of us didn&#39;t then our process would not have worked.
+After some reflection we have concluded that our project was handled very well and that we have done a great job at taking responsibility for our parts of the system. What made us have such a smooth ride when maintaining and creating our system was the split of responsibilities we set before actually starting the project. We split ourselves up into two major groups frontend and backend, and within those groups we set who had more responsibility of which parts of the system. That worked very well for us as there were group members that felt responsible for making their part of the system work as they would let the rest of the team down if their part didn't work. Even though we were good at handling our parts of the system one thing that did lack was solid communication between each other. Overall we knew what we each had to do and how to do it but we did not communicate between each other about the status of our work or the problems we were facing. This could have helped us find some solutions faster as someone in the team would probably be able to help out. We were also not very good at discussing how exactly we would integrate our system, this was due to the lack of documentation, even the simplest form of it. This led to us having to look through source code in order to understand how to integrate. This was fine as we all knew the languages and technologies we were working with but if one of us didn't then our process would not have worked.
 
 In terms of the technologies we used we were very satisfied with our choices and the wide use of different techs. This made us gain experience with different technologies and made us learn a lot more than we would have expected. The only downside was the choice of our database. We did not look at other peoples experience with databases but rather made our own interpretation of what we thought would be the best database for the user case. This put us behind as we faced many problems with Neo4J, as it was not good at handling large sets of aggregated data. Other than that our stack seemed to be near flawless.
 
@@ -271,11 +271,11 @@ Unfortunately we did not comply with our SLA.
 
 Our service will have a maximum response time of 60 milliseconds.
 
-We totally failed to meet this requirement. This is due to the fact that we didn&#39;t think about growing complexity and data of system. By the time of writing that SLA we were complying with it but data was increasing too rapidly for us to keep up with quality. We believe that it could be solved by making a direct relationship between response time and size of database. For example we could promise 60 ms with 100k nodes and 2s with 1m of nodes etc.
+We totally failed to meet this requirement. This is due to the fact that we didn't think about growing complexity and data of system. By the time of writing that SLA we were complying with it but data was increasing too rapidly for us to keep up with quality. We believe that it could be solved by making a direct relationship between response time and size of database. For example we could promise 60 ms with 100k nodes and 2s with 1m of nodes etc.
 
 Our services minimum expected up time is set at 95% per month.
 
-We failed to meet this metric too. Our uptime by the last time that we took a look at it was 91,73%. This is due to the fact that as much as we want we can&#39;t monitor the system 24/7. We have different courses that also require our attention and we all have part time jobs too. For example if system will go down on Monday 3 A.M there is no way for any of us to do anything about it till 6 P.M. We are sure that if it would be a real system that we were working full time on, we would be able to meet 95% availability threshold.
+We failed to meet this metric too. Our uptime by the last time that we took a look at it was 91,73%. This is due to the fact that as much as we want we can't monitor the system 24/7. We have different courses that also require our attention and we all have part time jobs too. For example if system will go down on Monday 3 A.M there is no way for any of us to do anything about it till 6 P.M. We are sure that if it would be a real system that we were working full time on, we would be able to meet 95% availability threshold.
 
 3.2. Group work reflection &amp; Lessons learned
 
@@ -293,4 +293,4 @@ Lastly, that it is a bad idea to only use neo4j for large data sets. We found ou
 
 Summing up we think that this project was a major success. It was a very challenging but also rewarding experience. We think that we delivered big functional system that could be used and maintained in real life scenario. It was a very fun project that has shown us how many things are necessary to do, after product is released.
 
-We are aware that we did not comply with SLA and we miss few features here and there (down votes from 500 karma points or more, lack of buffer which results in losing data between updates, bad performance of Neo4j in some cases). We have learned a lot on those mistakes and we think that those mistakes are actually the most valuable things that we done during this project period. In school environment they have little to none impact and if we didn&#39;t make them here, we would do them in &quot;real life&quot; industry which would have way bigger consequences.
+We are aware that we did not comply with SLA and we miss few features here and there (down votes from 500 karma points or more, lack of buffer which results in losing data between updates, bad performance of Neo4j in some cases). We have learned a lot on those mistakes and we think that those mistakes are actually the most valuable things that we done during this project period. In school environment they have little to none impact and if we didn't make them here, we would do them in &quot;real life&quot; industry which would have way bigger consequences.
